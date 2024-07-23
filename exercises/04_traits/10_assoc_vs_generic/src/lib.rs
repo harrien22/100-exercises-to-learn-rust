@@ -12,6 +12,18 @@
 // interested in learning more about it.
 // You don't have to though: it's perfectly okay to write three separate
 // implementations manually. Venture further only if you're curious.
+trait Power<T> {
+    fn power(&self, n: T) -> u32;
+}
+
+impl<T> Power<T> for u32
+where
+    T: Into<u32>,
+{
+    fn power(&self, n: T) -> u32 {
+        self.pow(n.into())
+    }
+}
 
 #[cfg(test)]
 mod tests {
@@ -31,7 +43,7 @@ mod tests {
 
     #[test]
     fn test_power_ref_u32() {
-        let x: u32 = 2_u32.power(&3u32);
+        let x: u32 = 2_u32.power(*&3u32);
         assert_eq!(x, 8);
     }
 }

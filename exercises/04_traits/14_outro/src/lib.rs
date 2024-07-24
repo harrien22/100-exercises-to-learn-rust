@@ -8,7 +8,7 @@
 //   It should be possible to print its debug representation.
 //
 // Tests are located in the `tests` folder—pay attention to the visibility of your types and methods.
-use std::ops::{Add, Deref};
+use std::ops::Add;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct SaturatingU16 {
@@ -48,7 +48,7 @@ impl SaturatingU16 {
         Self { value }
     }
 
-    pub fn saturating_add(&self, other: &Self) -> Self {
+    pub fn saturating_add(&self, other: Self) -> Self {
         let sum = self.value.saturating_add(other.value);
         Self::new(sum)
     }

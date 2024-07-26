@@ -15,7 +15,7 @@ pub fn fibonacci(n: u32) -> u32 {
     //
     // Hint: use a `Vec` to memoize the results you have already calculated
     // so that you don't have to recalculate them several times.
-    todo!()
+    (0..n).fold((0, 1), |t, _| (t.1, t.0 + t.1)).0
 }
 
 #[cfg(test)]
